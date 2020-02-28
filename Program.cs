@@ -26,9 +26,45 @@ namespace DocumentMerger
             {
                 Console.WriteLine("Error opening to write to {0}: {1}", newFile, error.Message);
 
-
-                Console.WriteLine("idk");
             }
+
+            ulong characterCount = 0;
+            StreamReader read = null;
+            string currentFile = null;
+
+            try
+            {
+                foreach (string inputFile in userFiles)
+                {
+                    currentFile = inputFile;
+                    read = new StreamReader(currentFile);
+                    string line = null;
+                    while ((line = read.ReadLine()) != null)
+                    {
+                        write.WriteLine(line);
+                        characterCount = characterCount + (ulong)line.Length;
+                    }
+                    read.Close();
+                }
+            }
+            catch (Exception error) 
+            {
+                Console.WriteLine("Error while processing {0}: {1}", currentFile, error.Message);
+                System.Environment.Exit(2);
+            }
+            finally
+            {
+                if (read != null)
+                {
+                    read.Close();
+                }
+                if (write != null)
+                {
+                    write.Close();
+                }
+            }
+
+            Console.WriteLine("{0} was successfully saved. The document contains {1} characters", currentFile, characterCount);
         }
     }
 }
