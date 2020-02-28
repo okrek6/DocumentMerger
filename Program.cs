@@ -8,7 +8,8 @@ namespace DocumentMerger
         {
             if (args.Length < 3)
             {
-                Console.WriteLine("DocumentMerger2 <input_file_1> <input_file_2> <input_file_n> <output_file>");
+                Console.WriteLine("DocumentMerger2 <input_file_1> <input_file_2> <input_file_n> <output_file>\n");
+                Console.WriteLine("---------------------------");
                 Console.WriteLine("Give some text files to be MERGED. Make sure to include the name of the file that will include the merged files.");
                 Console.WriteLine("No less than two files can be provided");
             }
