@@ -6,9 +6,9 @@ namespace DocumentMerger
     {
         static void Main(string[] args)
         {
-            if (args.Length < 3)
+            if (args.Length < 3) // remember to give three file names.. 
             {
-                Console.WriteLine("DocumentMerger2 <input_file_1> <input_file_2> <input_file_n> <output_file>\n");
+                Console.WriteLine("Document Merger");
                 Console.WriteLine("---------------------------");
                 Console.WriteLine("Give some text files to be MERGED. Make sure to include the name of the file that will include the merged files.");
                 Console.WriteLine("No less than two files can be provided");
@@ -50,22 +50,23 @@ namespace DocumentMerger
             }
             catch (Exception error) 
             {
-                Console.WriteLine("Error while processing {0}: {1}", currentFile, error.Message);
-                System.Environment.Exit(2);
+                Console.WriteLine("Something went wrong here..{0}: {1}", currentFile, error.Message);
             }
             finally
             {
                 if (read != null)
                 {
                     read.Close();
+                    //if read is not null work it closes..
                 }
                 if (write != null)
                 {
                     write.Close();
+                    //if write is not null """"  .. 
                 }
             }
 
-            Console.WriteLine("{0} was successfully saved. The document contains {1} characters", currentFile, characterCount);
+            Console.WriteLine("{0} was saved. {0} contains {1} characters total", currentFile, characterCount);
         }
     }
 }
